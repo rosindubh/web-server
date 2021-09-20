@@ -9,13 +9,9 @@ exports.steve = (req, res) => {
 
 exports.helloWorld = (req, res) => {
     const name = req.body.name;
-    const day = req.body.day;
-    const date = req.body.date;
-    const month = req.body.month;
-    const add = req.body.add;
-    const year = req.body.year;
+    const age = req.body.age;
 
-    res.send(`Phil says, ${name} today is ${day} the ${date}${add} of ${month} ${year}`);
+    res.send(`Phil says, ${name} is ${age} today`);
 }
 
 const obj = [
@@ -38,12 +34,19 @@ exports.testPost = (req, res) => {
 }
 
 exports.testPut = (req, res) => {
-    const {id, name, age} = req.body;
-    obj.map((entry) =>
-        entry.id === id
-            ? ((entry.name = name),
-                (entry.age = age))
-            : null
-    )
+    const addEntry = req.body;
+    obj.push(addEntry)
     res.send(obj)
 }
+
+// exports.testPut = (req, res) => {
+//     const {id, name, age} = req.body;
+//     obj.map((entry) =>
+//         entry.id === id
+//             ? ((entry.name = name),
+//                 (entry.age = age))
+//             : null
+//     )
+//     res.send(obj)
+// }
+
