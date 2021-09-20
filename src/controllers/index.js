@@ -17,3 +17,33 @@ exports.helloWorld = (req, res) => {
 
     res.send(`Phil says, ${name} today is ${day} the ${date}${add} of ${month} ${year}`);
 }
+
+const obj = [
+    {
+        id: 0,
+        name: 'phil',
+        age: 61,
+
+    }
+];
+
+exports.testObj = (req, res) => {
+    res.send(obj);
+}
+
+exports.testPost = (req, res) => {
+    const addEntry = req.body;
+    obj.push(addEntry)
+    res.send(obj);
+}
+
+exports.testPut = (req, res) => {
+    const {id, name, age} = req.body;
+    obj.map((entry) =>
+        entry.id === id
+            ? ((entry.name = name),
+                (entry.age = age))
+            : null
+    )
+    res.send(obj)
+}

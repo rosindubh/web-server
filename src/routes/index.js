@@ -1,6 +1,6 @@
 const {Router} = require("express");
 const helloRouter = Router();
-const {steve, helloWorld} = require("../controllers");
+const {steve, helloWorld, testObj, testPut, testPost} = require("../controllers");
 
 helloRouter.get("/steve", steve);
 helloRouter.post("/steve", steve);
@@ -14,6 +14,12 @@ helloRouter.put("/helloWorld", helloWorld);
 helloRouter.patch("/helloWorld", helloWorld);
 helloRouter.delete("/helloWorld", helloWorld);
 
+helloRouter.get("/testObj", testObj);
+
+helloRouter.post("/testPost", testPost);
+
+
+helloRouter.put("/testPut", testPut);
 
 
 
