@@ -2,49 +2,21 @@
 //     res.send("Gary Steve Says Hello World!!");
 // };
 
-exports.steve = (req, res) => {
+exports.readSteve = (req, res) => {
     const name = req.body.name
-    res.send(`${name} smells!!`)
+    res.send({ message: "sucessful get request"})
 };
 
-exports.helloWorld = (req, res) => {
+exports.addSteve = (req, res) => {
     const name = req.body.name;
-    const age = req.body.age;
-
-    res.send(`Phil says, ${name} is ${age} today`);
+    res.send({ message: `${name} smells`});
 }
+ 
+exports.updateSteve = (req, res) => {
+    const update = req.body.name + "2.0";
+    res.send({ message: update });
+};
 
-const obj = [
-    {
-        id: 0,
-        name: 'phil',
-        age: 61,
-
-    }
-];
-
-exports.testObj = (req, res) => {
-    res.send(obj);
-}
-
-exports.testPost = (req, res) => {
-    const addEntry = req.body;
-    obj.push(addEntry)
-    res.send(obj);
-}
-
-exports.testPut = (req, res) => {
-    const {id, name, age} = req.body;
-    change = obj.map((entry) =>
-        entry.id === id
-            ? ((entry.name = name),
-                (entry.age = age))
-            : null
-    )
-    res.send(change)
-}
-
-exports.testDelete = (req, res) => {
-    const {id, name, age} = req.body;
-    res.send("successful delete request")    
+exports.deleteSteve = (req, res) => {
+    res.send({ message: "successful delete request"})
 }
