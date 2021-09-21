@@ -1,7 +1,12 @@
 const Film = require("../models")
-exports.readSteve = (req, res) => {
-    // const name = req.body.name
-    res.json({ message: "sucessful get request"})
+
+exports.findFilms = async (req, res) => {
+  try {
+    const list = await Film.find({});
+    res.status(200).send({ allFilms: list });
+  } catch (error) {
+    res.status(500).send({ err: error });
+  }
 };
 
 exports.addFilm = async (req, res) => {
@@ -19,6 +24,12 @@ exports.updateSteve = (req, res) => {
     res.send({ message: update });
 };
 
-exports.deleteSteve = (req, res) => {
-    res.send({ message: "successful delete request"})
+exports.deleteFilm = async (req, res) => {
+  try {
+    const film = new Film(req.body);
+    await Film.findOneAndDelete(film)
+    res.status(200).send({ film: film, message: "Successfully deleted film" });
+  } catch (error) {
+    res.status(500).send({ err: error });
+  }  
 }
