@@ -44,3 +44,7 @@ exports.testPut = (req, res) => {
     res.send(change)
 }
 
+exports.testDelete = (req, res) => {
+    const {id, name, age} = req.body;
+    res.send("successful delete request")    
+}
