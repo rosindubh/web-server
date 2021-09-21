@@ -34,19 +34,13 @@ exports.testPost = (req, res) => {
 }
 
 exports.testPut = (req, res) => {
-    const addEntry = req.body;
-    obj.push(addEntry)
-    res.send(obj)
+    const {id, name, age} = req.body;
+    change = obj.map((entry) =>
+        entry.id === id
+            ? ((entry.name = name),
+                (entry.age = age))
+            : null
+    )
+    res.send(change)
 }
-
-// exports.testPut = (req, res) => {
-//     const {id, name, age} = req.body;
-//     obj.map((entry) =>
-//         entry.id === id
-//             ? ((entry.name = name),
-//                 (entry.age = age))
-//             : null
-//     )
-//     res.send(obj)
-// }
 
