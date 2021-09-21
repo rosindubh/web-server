@@ -1,10 +1,6 @@
-// exports.helloWorld = (req, res) => {
-//     res.send("Gary Steve Says Hello World!!");
-// };
-
 exports.readSteve = (req, res) => {
-    const name = req.body.name
-    res.send({ message: "sucessful get request"})
+    // const name = req.body.name
+    res.json({ message: "sucessful get request"})
 };
 
 exports.addSteve = (req, res) => {
