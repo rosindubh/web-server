@@ -20,15 +20,15 @@ exports.addFilm = async (req, res) => {
 };
  
 exports.updateSteve = (req, res) => {
-    const update = req.body.name + " 2.0";
+    const update = req.body.name + "2.0";
     res.send({ message: update });
 };
 
 exports.deleteFilm = async (req, res) => {
   try {
-    const film = await Film(req.body);
+    const film = new Film(req.body);
     await Film.findOneAndDelete(film)
-    res.status(200).send({ film: film, message: `Successfully deleted ${film.name}` });
+    res.status(200).send({ film: film, message: "Successfully deleted film" });
   } catch (error) {
     res.status(500).send({ err: error });
   }  
