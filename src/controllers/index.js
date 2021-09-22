@@ -27,8 +27,8 @@ exports.updateSteve = (req, res) => {
 exports.deleteFilm = async (req, res) => {
   try {
     const film = new Film(req.body);
-    await Film.findOneAndDelete(film)
-    res.status(200).send({ film: film, message: "Successfully deleted film" });
+    await Film.findOneAndDelete(film.name)
+    res.status(200).send({ film: film.name, message: `Successfully deleted ${film.name}` });
   } catch (error) {
     res.status(500).send({ err: error });
   }  
